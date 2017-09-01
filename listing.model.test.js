@@ -1,4 +1,4 @@
-var should = require('should'), 
+;var should = require('should'), 
     mongoose = require('mongoose'), 
     Listing = require('./ListingSchema'), 
     config = require('./config');
@@ -18,7 +18,13 @@ listing =  {
 describe('Listing Schema Unit Tests', function() {
 
   before(function(done) {
-    mongoose.connect(config.db.uri);
+    /*
+	checking the error
+    */
+    mongoose.connect(config.db.uri, function(err, db){
+      if (err) console.log('err');
+      else console.log('connected');
+    });
     done();
   });
 
