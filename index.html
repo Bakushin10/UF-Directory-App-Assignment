@@ -57,29 +57,28 @@
             <div class="modal-header">
                 <h4>New Building info</h4>
             </div>
-            <div class="modal-body">
+            <form class="modal-body" ng-submit="addListing()">
                 <div>
                   <label>Code :
                     <input type="text" ng-model="input.code"></input>
                   </label>
                 </div>
                 <label>Building Name  :
-                  <input type="text" class = "newInputTextBox" ng-model="input.BuildingName"></input>
+                  <input type="text" class = "newInputTextBox" ng-model="input.name"></input>
                 </label>
                 <label>Latitude :
-                  <input type="number" class = "newInputTextBox" ng-model="input.Latitude"></input>
+                  <input type="number" class = "newInputTextBox" ng-model="input.coordinates.latitude"></input>
                 </label>
                 <label>Longitude :
-                  <input type="number" class = "newInputTextBox" ng-model="input.Longitude"></input>
+                  <input type="number" class = "newInputTextBox" ng-model="input.coordinates.longitude"></input>
                 </label>
                 <label>Address :
-                  <input type="text" class = "newInputTextBox" ng-model="input.Address"></input>
+                  <input type="text" class = "newInputTextBox" ng-model="input.address"></input>
                 </label>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-success" ng-click="addListing(); ok()">Okay</button>
-              <button class="btn" ng-click="cancel()">Cancel</button>
-            </div>
+
+              <input class="btn btn-success" type="submit"></button>
+            </form>
+                          <button class="btn" ng-click="cancel()">Cancel</button>
           </div>
       </div>
         <div class="col-md-8">
@@ -109,4 +108,3 @@
     <script src="listingFactory.js"></script>
   </body>
 </html>
-

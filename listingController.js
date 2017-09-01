@@ -8,15 +8,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       as described in the assignment spec.
      */
     $scope.addListing = function() {
-      $scope.listings.push({
-        "code": $scope.input.code,
-        "name": $scope.input.BuildingName,
-        "coordinates": {
-          "latitude": $scope.input.Latitude,
-          "longitude":$scope.input.Longitude
-        },
-        "address" : $scope.input.Address
-      })
+      $scope.listings.push($scope.input);
+      $scope.input = {};
     };
     $scope.deleteListing = function(index) {
        $scope.listings.splice(index, 1);
@@ -32,21 +25,10 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.ok = function() {
       $scope.showModal = false;
-      $scope.clearData();
     };
 
     $scope.cancel = function() {
       $scope.showModal = false;
-      $scope.clearData();
     };
-
-    $scope.clearData = function(){
-      $scope.input.code = null;
-      $scope.input.BuildingName = null;
-      $scope.input.Address = null;
-      $scope.input.Latitude = "";
-      $scope.input.Longitude = "";
-    }
   }
 ]);
-
