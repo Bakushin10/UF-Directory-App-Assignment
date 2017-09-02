@@ -1,5 +1,5 @@
 /* Import mongoose and define any variables needed to create the schema */
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /* Create your schema */
@@ -7,8 +7,8 @@ var listingSchema = new Schema({
    code: {type:String, required: true},
    name: {type:String, required: true},
    coordinates:{
-	latitude: Number,
-	longitude: Number
+    	latitude: Number,
+    	longitude: Number
    },
    address:String,
    updated_at: Date,
