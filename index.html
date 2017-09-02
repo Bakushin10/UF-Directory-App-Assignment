@@ -60,11 +60,11 @@
             <form class="modal-body" ng-submit="addListing()">
                 <div>
                   <label>Code :
-                    <input type="text" ng-model="input.code"></input>
+                    <input type="text" ng-model="input.code" required></input>
                   </label>
                 </div>
                 <label>Building Name  :
-                  <input type="text" class = "newInputTextBox" ng-model="input.name"></input>
+                  <input type="text" class = "newInputTextBox" ng-model="input.name" required></input>
                 </label>
                 <label>Latitude :
                   <input type="number" class = "newInputTextBox" ng-model="input.coordinates.latitude"></input>
@@ -75,10 +75,12 @@
                 <label>Address :
                   <input type="text" class = "newInputTextBox" ng-model="input.address"></input>
                 </label>
-
-              <input class="btn btn-success" type="submit"></button>
+                <div class = "row">
+                  <button class="btn btn-success" type="submit">submit</button>
+                  <button class="btn" ng-click="cancel()">Cancel</button>
+                </div>
             </form>
-                          <button class="btn" ng-click="cancel()">Cancel</button>
+
           </div>
       </div>
         <div class="col-md-8">
