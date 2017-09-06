@@ -19,10 +19,6 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       $scope.detaile = $scope.listings[index];
     };
 
-    $scope.open = function() {
-      $scope.showModal = true;
-    };
-
     $scope.ok = function() {
       $scope.showModal = false;
     };
@@ -30,5 +26,12 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.cancel = function() {
       $scope.showModal = false;
     };
+    $scope.SortTypeCode = function(){
+      $scope.SortType = 'code';
+    }
+    $scope.SortTypeBuildingName = function(){
+      $scope.SortType = 'name';
+    }
+
   }
 ]);

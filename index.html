@@ -44,43 +44,61 @@
 
                 -->
 
-              <tr ng-repeat = "personInfo in listings | filter: search" ng-click = "showDetails(listings.indexOf(personInfo))">
+              <tr ng-repeat = "personInfo in listings | orderBy: SortType |filter: search" ng-click = "showDetails(listings.indexOf(personInfo))">
                 <td>{{personInfo.code}}</td>
                 <td>{{personInfo.name}}</td>
                 <td><i class="fa fa-times closeButton" ng-click = "deleteListing(listings.indexOf(personInfo))" aria-hidden="true"></i></td>
               </tr>
             </table>
           </div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary newBuildingButton" data-toggle="modal" data-target="#exampleModalLong">New Building</button>
+          <button type="button" class ="btn btn-info newBuildingButton" ng-click = "SortTypeCode()">Sort by code</button>
+          <button type="button" class ="btn btn-info newBuildingButton" ng-click = "SortTypeBuildingName()">Sort by Building</button>
 
-          <button type="button" class ="btn btn-info newBuildingButton" ng-click = "open()">New Building</button>
-          <div ng-show ="showModal" close="cancel()">
-            <div class="modal-header">
-                <h4>New Building info</h4>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLongTitle">New Building Info</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="modal-body" ng-submit="addListing()">
+                      <div>
+                        <label>Code :
+                          <input type="text" ng-model="input.code" required></input>
+                        </label>
+                      </div>
+                      <label>Building Name  :
+                        <input type="text" class = "newInputTextBox" ng-model="input.name" required></input>
+                      </label>
+                      <div>
+                        <label>Latitude :
+                          <input type="number" class = "newInputTextBox" ng-model="input.coordinates.latitude"></input>
+                        </label>
+                      </div>
+                      <div>
+                        <label>Longitude :
+                          <input type="number" class = "newInputTextBox" ng-model="input.coordinates.longitude"></input>
+                        </label>
+                      </div>
+                      <label>Address :
+                        <input type="text" class = "newInputTextBox" ng-model="input.address"></input>
+                      </label>
+                      <div class="modal-footer">
+                        <div class = "row">
+                          <button class="btn btn-success" type="submit" data-ng-click="cancel()">submit</button>
+                          <button class="btn" ng-click="cancel()" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  </form>
+                </div>
+              </div>
             </div>
-            <form class="modal-body" ng-submit="addListing()">
-                <div>
-                  <label>Code :
-                    <input type="text" ng-model="input.code" required></input>
-                  </label>
-                </div>
-                <label>Building Name  :
-                  <input type="text" class = "newInputTextBox" ng-model="input.name" required></input>
-                </label>
-                <label>Latitude :
-                  <input type="number" class = "newInputTextBox" ng-model="input.coordinates.latitude"></input>
-                </label>
-                <label>Longitude :
-                  <input type="number" class = "newInputTextBox" ng-model="input.coordinates.longitude"></input>
-                </label>
-                <label>Address :
-                  <input type="text" class = "newInputTextBox" ng-model="input.address"></input>
-                </label>
-                <div class = "row">
-                  <button class="btn btn-success" type="submit">submit</button>
-                  <button class="btn" ng-click="cancel()">Cancel</button>
-                </div>
-            </form>
-
           </div>
       </div>
         <div class="col-md-8">
