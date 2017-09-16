@@ -125,6 +125,7 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
 
     };
 
+
     /* Bind the success message to the scope if it exists as part of the current state */
     if($stateParams.successMessage) {
       $scope.success = $stateParams.successMessage;
@@ -138,5 +139,61 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
       }, 
       zoom: 14
     }
+
+    /*** google map API ***/
+/*
+    Listings.getAll().then(function(response) {
+      $scope.listings = response.data;
+      
+      var temp = [];
+      for(var i = 0; i < $scope.listings.length; i++){
+        if($scope.listings[i].coordinates){
+          var listing = {
+              id: $scope.listings[i]._id,
+              latitude: $scope.listings[i].coordinates.latitude,
+              longitude: $scope.listings[i].coordinates.longitude,
+              name: $scope.listings[i].name, 
+              code: $scope.listings[i].code, 
+              address: $scope.listings[i].address,
+              show: false 
+        };
+      
+        temp.push(listing);
+        }
+      }
+      $scope.markers = temp;
+  }, function(error) {
+      throw error;
+  });
+  */
+    /////
+    /////
+    /////
+
+    Listings.getAll().then(function(response) {
+      $scope.listings = response.data;
+      var locationList = [];
+      
+      for(var i = 0; i< $scope.listings.length ;i++){
+        if($scope.listings[i].coordinates){
+          var location ={
+            id: $scope.listings[i]._id,
+            name: $scope.listings[i].name,
+            code: $scope.listings[i].code,
+            address: $scope.listings[i].address,
+            latitude: $scope.listings[i].coordinates.latitude,
+            longitude: $scope.listings[i].coordinates.longitude,
+            show: false
+          };
+        }
+
+        locationList.push(location);
+      }//end of for
+
+      $scope.Makers = locationList;
+    }, function(error) {
+      throw error;
+    });
+
   }
 ]);
